@@ -2,9 +2,16 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 export default class ComponenteClase extends Component {
-  state = {
-    contador: 10,
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      contador: 10,
+    };
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick() {
+    alert("Click en Clases")
+  }
   render() {
     const { nombre, edad } = this.props;
     // let contador = 0
@@ -30,6 +37,9 @@ export default class ComponenteClase extends Component {
         >Incrementar</button>
         <button onClick={() => console.log(this.state.contador)}>
           Ver contador
+        </button>
+        <button onClick={this.handleClick}>
+          Haz click
         </button>
         {/* {children} */}
       </>
