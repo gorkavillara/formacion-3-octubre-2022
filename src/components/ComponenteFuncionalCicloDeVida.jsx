@@ -26,7 +26,7 @@ const ComponenteFuncionalCicloDeVida = ({ contadorInicial = 0, toggleInicial = f
       </button>
       <button onClick={() => setContador(prev => prev + 1)}>Suma</button>
     </>
-  );
+  )
 };
 
 export default ComponenteFuncionalCicloDeVida;
