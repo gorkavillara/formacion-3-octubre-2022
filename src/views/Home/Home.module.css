@@ -1,0 +1,8 @@
+.titulo {
+    font-size: 2rem;
+    color: blue;
+}
+
+.titulo:hover {
+    color: red;
+}

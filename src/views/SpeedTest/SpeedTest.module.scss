@@ -1,0 +1,16 @@
+.speed-tester {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    h3 {
+        color: white;
+    }
+    div.container {
+        width: 300px;
+        background-color: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #ffffff88;
+    }
+}

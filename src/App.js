@@ -1,55 +1,47 @@
-import React, { useState } from "react";
-import "./App.css";
-import {
-  ElementoTitulo,
-  ComponenteTitulo,
-} from "./components/ComponenteElemento";
-import ComponenteClase from "./components/ComponenteClase";
-import ComponenteFuncional from "./components/ComponenteFuncional";
-import ComponenteCicloDeVida from "./components/ComponenteCicloDeVida";
-import ComponenteFuncionalCicloDeVida from "./components/ComponenteFuncionalCicloDeVida";
-import ComponenteForm from "./components/ComponenteForm";
-import UseMemoComponent from "./components/UseMemoComponent";
-import ComponenteEventos from "./components/ComponenteEventos";
+import React, { useContext } from "react";
+import "./App.scss";
+import NavBar from "./components/common/NavBar";
+import ClassicForm from "./views/ClassicForm/ClassicForm";
+import Dashboard from "./views/Dashboard/Dashboard";
+import FormikForm from "./views/FormikForm/FormikForm";
+import Home from "./views/Home/Home";
+import TodoList from "./views/TodoList/TodoList";
 
-const getValor = () => {
-  let suma = 0;
-  for (let i = 0; i < 10; i++) {
-    suma += i;
-  }
-  return suma;
+import { AppContext } from "./contexts/AppContextProvider";
+import SpeedTestContextProvider from "./contexts/SpeedTestContextProvider";
+import SpeedTest from "./views/SpeedTest/SpeedTest";
+
+const views = {
+  home: <Home />,
+  dashboard: <Dashboard />,
+  todolist: <TodoList />,
+  classicForm: <ClassicForm />,
+  formikForm: <FormikForm />,
+  speedTest: (
+    <SpeedTestContextProvider>
+      <SpeedTest />
+    </SpeedTestContextProvider>
+  ),
 };
 
 function App() {
-  const valor = getValor();
-  const [renderiza, setRenderiza] = useState(true);
+  const { vRoute } = useContext(AppContext);
+  // const [vRoute, setVRoute] = useState("formikForm");
+  // const context = useContext(AppContext);
+  // console.log(context);
+  // const { vRoute } = context;
+  // const setVRoute = () => null;
+  // if (vRoute === "home") return <Home />
+  // if (vRoute === "dashboard") return <Dashboard />
   return (
     <>
-      {/* <div>Hola Mundo</div> */}
-      <div>
-        <button onClick={() => setRenderiza((prev) => !prev)}>
-          Cambia Renderizado
-        </button>
-        {/* {ElementoTitulo}
-        <ComponenteTitulo nombre="Gorka">
-          <p>Esto es un párrafo</p>
-        </ComponenteTitulo> */}
-        {/* <ComponenteClase nombre="Benjami" edad={3}>
-          <div>
-            <h3>Este es el children</h3>
-          </div>
-        </ComponenteClase> */}
-        {/* <ComponenteFuncional nombre="Gil" edad={32}>
-          <div>
-            <h3>Este es el children</h3>
-          </div>
-        </ComponenteFuncional> */}
-        {/* {renderiza ? <ComponenteCicloDeVida /> : null} */}
-        {/* <ComponenteFuncionalCicloDeVida titulo="Componente Funcional" toggleInicial />
-        <ComponenteForm /> */}
-        {/* <UseMemoComponent /> */}
-        {/* <ComponenteEventos /> */}
-        <ComponenteForm />
+      <div className="App">
+        <NavBar />
+        {views[vRoute]}
+        {/* {vRoute === "home" ? <Home /> : null} */}
+        {/* {vRoute === "home" && <Home />} */}
+        {/* {vRoute === "dashboard" ? <Dashboard /> : null } */}
+        {/* {vRoute === "dashboard" && <Dashboard />} */}
       </div>
     </>
   );
