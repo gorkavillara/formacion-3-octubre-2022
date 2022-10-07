@@ -3,6 +3,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import SpeedTestContextProvider from "../contexts/SpeedTestContextProvider";
 import ClassicForm from "../views/ClassicForm/ClassicForm";
 import Dashboard from "../views/Dashboard/Dashboard";
+import Registro from "../views/Dashboard/views/Registro";
+import Usuarios from "../views/Dashboard/views/Usuarios";
 import FormikForm from "../views/FormikForm/FormikForm";
 import Home from "../views/Home/Home";
 import SpeedTest from "../views/SpeedTest/SpeedTest";
@@ -40,9 +42,10 @@ const AppRoutes = () => {
       <Route path="dashboard" element={<Dashboard />}>
         <Route path="top" element={<h1>Top</h1>} />
         <Route path="detalles" element={<h1>Detalles</h1>} />
-        <Route path="usuarios" element={<h1>Usuarios</h1>} />
+        <Route path="usuarios" element={<Usuarios />} />
         <Route path="usuarios/:id"  element={<h2>Detalle usuario</h2>} />
         <Route path="configuracion" element={<h1>Configuración</h1>} />
+        <Route path="registro" element={<Registro />} />
       </Route>
 
       <Route path="speed-test" element={views.speedTest} />
