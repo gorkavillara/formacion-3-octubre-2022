@@ -1,4 +1,5 @@
 import React, { createContext, useState, useReducer } from "react";
+import { writeReducer, initialWriteState } from "../reducers";
 
 export const SpeedTestContext = createContext();
 
@@ -9,25 +10,27 @@ export const SpeedTestContext = createContext();
 //     return estadoActual
 // }
 
-const writeReducer = (state, action) => {
-  const { written, testPhrase } = action?.payload;
-  if (action.type === "tryWrite") {
-    if (written === "") return ""
-    return written.substr(-1) === testPhrase.at(written.length - 1)
-      ? written
-      : state;
-  }
-  return state;
-};
+// const writeState = ""
 
 const SpeedTestContextProvider = ({ children }) => {
-  const [writePhrase, dispatchWrite] = useReducer(writeReducer, "");
-  const [testPhrase, setTestPhrase] = useState(
-    "Esto es lo que pasa cuando se te deja solo"
+  // const [writePhrase, dispatchWrite] = useReducer(writeReducer, writeReducer());
+  const [writeState, dispatchWrite] = useReducer(
+    writeReducer,
+    initialWriteState
   );
+
+  // const [testPhrase, setTestPhrase] = useState(
+  //   "Esto es lo que pasa cuando se te deja solo"
+  // );
+  // Toda la lógica dentro del componente
   return (
     <SpeedTestContext.Provider
-      value={{ testPhrase, writePhrase, dispatchWrite }}
+      value={{
+        testPhrase: writeState.testPhrase,
+        writePhrase: writeState.writePhrase,
+        timeElapsed: writeState.timeElapsed,
+        dispatchWrite,
+      }}
     >
       {children}
     </SpeedTestContext.Provider>

@@ -12,7 +12,7 @@ const TestPhrase = ({ testPhrase, writePhrase }) => {
 };
 
 const SpeedTest = () => {
-  const { testPhrase, writePhrase, dispatchWrite } =
+  const { testPhrase, writePhrase, dispatchWrite, timeElapsed } =
     useContext(SpeedTestContext);
   return (
     <div className={styles["speed-tester"]}>
@@ -20,6 +20,7 @@ const SpeedTest = () => {
       <div className={styles.container}>
         <TestPhrase testPhrase={testPhrase} writePhrase={writePhrase} />
       </div>
+      {timeElapsed && <span>Tu tiempo ha sido de {timeElapsed} segundos</span>}
       <input
         type="text"
         value={writePhrase}
@@ -29,7 +30,9 @@ const SpeedTest = () => {
             payload: { written: e.target.value, testPhrase },
           })
         }
+        disabled={typeof timeElapsed !== "undefined"}
       />
+      <button onClick={() => dispatchWrite({ type: "reset" })}>Reset</button>
     </div>
   );
 };
