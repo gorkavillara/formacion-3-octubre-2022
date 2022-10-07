@@ -1,41 +1,46 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../contexts/AppContextProvider";
 
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 const NavBar = () => {
   const { vRoute, setVRoute } = useContext(AppContext);
+  const navigate = useNavigate();
+  const handleAnchor = (e) => {
+    e.preventDefault();
+    console.log(e.target.pathname);
+
+    return navigate(e.target.pathname);
+  };
   return (
     <ul className="nav-bar">
       <li>
-        <button
-          className={vRoute === "home" ? "active" : ""}
-          onClick={() => setVRoute("home")}
+        <NavLink
+          to="/"
+          // style={(data) => ({ color: data.isActive ? "red" : "" })}
+          // className={({ isActive }) => (isActive ? "active" : "")}
+          end
         >
           Home
-        </button>
+        </NavLink>
+        {/* <br />
+        <NavLink
+          to="/bienvenido"
+          // className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          Bienvenida
+        </NavLink>
+        <br /> */}
+        {/* <a href="/" onClick={handleAnchor}>Inicio</a> */}
       </li>
       <li>
-        <button
-          className={`${vRoute === "speedTest" ? "active" : ""}`}
-          onClick={() => setVRoute("speedTest")}
-        >
-          Speed Test
-        </button>
+        <NavLink to="/speed-test">Speed Test</NavLink>
       </li>
-      {/* <li>
-        <button
-          className={`${vRoute === "dashboard" ? "active" : ""}`}
-          onClick={() => setVRoute("dashboard")}
-        >
-          Dashboard
-        </button>
-      </li> */}
       <li>
-        <button
-          className={`${vRoute === "todolist" ? "active" : ""}`}
-          onClick={() => setVRoute("todolist")}
-        >
-          Todos
-        </button>
+        <NavLink to="/todos">Todos</NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
     </ul>
   );
