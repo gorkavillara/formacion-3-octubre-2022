@@ -29,6 +29,12 @@ const Dashboard = () => {
             <li>
               <NavLink to="/dashboard/configuracion">Configuración</NavLink>
             </li>
+            <li>
+              <NavLink to="/dashboard/perfil">Perfil</NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard/login">Login</NavLink>
+            </li>
           </ul>
         </div>
         <div className={styles.contenido}>

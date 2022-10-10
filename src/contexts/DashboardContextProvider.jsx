@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useEffect, useReducer, useState } from "react";
 
 export const DashboardContext = createContext(null);
 
@@ -29,11 +29,11 @@ const dashboardReducer = (state, action) => {
 
   if (action.type === actions.SET_USUARIOS) {
     // Setear los usuarios
-    return { ...state, usuarios: action.payload }
+    return { ...state, usuarios: action.payload };
   }
   if (action.type === actions.ADD_USUARIO) {
     // Añadir un usuario al estado
-    return { ...state, usuarios: [...state.usuarios, action.payload] }
+    return { ...state, usuarios: [...state.usuarios, action.payload] };
   }
   if (action.type === actions.TOGGLE_MODE) {
     // Cambiar de modo de visualización
@@ -47,6 +47,8 @@ const DashboardContextProvider = ({ children }) => {
     initialState
   );
   const { usuarios, configuracion } = dashboardState;
+
+  const [activeUser, setActiveUser] = useState(null);
 
   useEffect(() => {
     fetchUsuarios();
@@ -64,18 +66,20 @@ const DashboardContextProvider = ({ children }) => {
       })
       .catch((e) => console.error(e))
       .finally(() => console.log("He terminado"));
-
-    // axios({ url, data: { action: "obtenAlumnos" } })
-
-    // const res = await axios
-    //   .post(url, { action: "obtenAlumnos" })
-    //   .catch(console.error)
-    //   .finally(() => console.log("He terminado"));
-    // Haces tu lógica con la respuesta
   };
 
   return (
-    <DashboardContext.Provider value={{ usuarios, configuracion, dispatchDashboard, actions, fetchUsuarios }}>
+    <DashboardContext.Provider
+      value={{
+        activeUser,
+        setActiveUser,
+        usuarios,
+        configuracion,
+        dispatchDashboard,
+        actions,
+        fetchUsuarios,
+      }}
+    >
       {children}
     </DashboardContext.Provider>
   );
