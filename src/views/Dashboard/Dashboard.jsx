@@ -35,7 +35,7 @@ const Dashboard = () => {
           sx={{ width: isOpen ? "200px" : "0px" }}
         >
           <Box sx={{ padding: "15px" }}>
-            <Typography variant="h5">Dashboard MUI</Typography>
+            <Typography variant="h5" color="secondary">Dashboard MUI</Typography>
           </Box>
           <Divider />
           <List>
@@ -86,7 +86,7 @@ const Dashboard = () => {
             </IconButton>
           </Box>
         </Drawer>
-        {!isOpen && <Fab color="primary" onClick={() => setIsOpen((prev) => !prev)} sx={{ position: "absolute", left: "10px", bottom: "10px" }}>
+        {!isOpen && <Fab color="secondary" onClick={() => setIsOpen((prev) => !prev)} sx={{ position: "absolute", left: "10px", bottom: "10px" }}>
           {isOpen ? (
             <BsChevronLeft />
           ) : (
