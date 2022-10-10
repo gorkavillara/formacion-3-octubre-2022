@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState } from "react";
+import Contador from "./performance/Contador";
+import HooksPerformance from "./performance/HooksPerformance";
 
 const Performance = () => {
+  const [toggle, setToggle] = useState(false);
   return (
-    <div>Performance</div>
-  )
-}
+    <>
+      {/* <Contador valorInicial={0} /> */}
+      <HooksPerformance />
+      <button onClick={() => setToggle((prev) => !prev)}>
+        {toggle ? "Off" : "On"}
+      </button>
+    </>
+  );
+};
 
-export default Performance
+export default Performance;

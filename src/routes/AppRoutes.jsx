@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import Performance from "../components/Performance";
 import SpeedTestContextProvider from "../contexts/SpeedTestContextProvider";
 import ClassicForm from "../views/ClassicForm/ClassicForm";
 import Dashboard from "../views/Dashboard/Dashboard";
@@ -62,6 +63,7 @@ const AppRoutes = () => {
 
       <Route path="speed-test" element={views.speedTest} />
       <Route path="todos" element={<TodoList />} />
+      <Route path="performance" element={<Performance />} />
       <Route path="*" element={<h1>Error 404 - No encontrado</h1>} />
     </Routes>
   );
