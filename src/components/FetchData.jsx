@@ -17,7 +17,7 @@ const FetchData = () => {
       .then((res) => setInfo(res))
       .catch(console.error);
   }, []);
-  console.log(info);
+  
   return info ? (
     <div>
       <span>{info.data.name}</span>
@@ -26,7 +26,7 @@ const FetchData = () => {
       <br />
       <Button primary={false} rgb size="large" label="Botón custom" />
     </div>
-  ) : null;
+  ) : <div>Loading...</div>;
 };
 
 export default FetchData;
