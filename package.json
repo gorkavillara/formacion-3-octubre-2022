@@ -23,6 +23,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:client1": "REACT_APP_API_URL=infoclient1 react-scripts build",
+    "build:client2": "REACT_APP_API_URL=infoclient2 react-scripts build",
+    "build:client3": "REACT_APP_API_URL=infoclient3 react-scripts build",
+    "build:all": "npm run build:client1 && npm run build:client2 && npm run build:client3",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

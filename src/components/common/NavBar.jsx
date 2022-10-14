@@ -43,6 +43,9 @@ const NavBar = () => {
       <li>
         <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
+      <li>
+        <NavLink to="/fetch-info">Fetch Info</NavLink>
+      </li>
     </ul>
   );
 };
