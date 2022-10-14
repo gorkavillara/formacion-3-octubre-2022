@@ -1,0 +1,25 @@
+.custom-button {
+  transition: all 0.2s;
+  box-shadow: none;
+}
+
+.custom-button.rgb {
+  animation: rgb infinite linear 4s;
+}
+
+.custom-button:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 0px 10px rgba(30, 30, 30, 0.2);
+}
+
+@keyframes rgb {
+  0% {
+    background-color: hsl(0deg, 100%, 50%);
+  }
+  50% {
+    background-color: hsl(180deg, 100%, 50%);
+  }
+  100% {
+    background-color: hsl(360deg, 100%, 50%);
+  }
+}
